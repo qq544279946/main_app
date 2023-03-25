@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const getAppConfig = async () => {
   const isLocal = window.location.hostname === 'localhost';
   if (isLocal) {
-    const curApp = window.location.pathname.slice('/')?.[0] ?? '';
+    const curApp = window.location.pathname.split('/')?.[1] ?? '';
     return await (await fetch(`//${window.location.host}/${curApp}/app_config.json`)).json();
   }
   const res =  await (await fetch('https://static.ppspace.top/app_config.json')).json();
